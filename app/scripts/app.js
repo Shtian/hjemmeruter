@@ -4,6 +4,7 @@ angular.module('[gtfo]App', [
   'ngCookies',
   'ngResource',
   'ngSanitize',
+  'ngRoute',
   'directives',
   'services'
 ])
