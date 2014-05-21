@@ -1,7 +1,7 @@
 angular.module('directives', [])
     .directive('arrival', function() {
       return{
-        restrict: 'E',
+        restrict: 'AE',
         transclude: false,
         scope: {
           arrivaldata: "="

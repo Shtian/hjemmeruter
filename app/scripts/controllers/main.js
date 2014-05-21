@@ -2,7 +2,7 @@
 
 angular.module('[gtfo]App')
   .controller('MainCtrl', ['$scope', '$http', '$timeout', '$interval', 'RuterService', function ($scope, $http, $timeout, $interval, RuterService) {
-    var lambertseterStopId = "3011010";
+    var lambertseterStopId = "3011010", ruterInterval = 20000, clockInterval = 500;
     var nbMoment = moment;
     nbMoment.lang('nb');
 
@@ -15,18 +15,21 @@ angular.module('[gtfo]App')
       };
     };
 
-    $interval(function(){
+    var ruterPromise = $interval(function(){
         var dataRequest = RuterService.GetAllDeparturesByStopId("3011010");
         dataRequest.success(function(data){
             data = _.where(data,{DeparturePlatformName: "2"});
             var travels = _.map(data, CreateTravelModel);
             $scope.travels = travels;
-            console.log("Departures Updated");
         });
-    }, 5000);
+    }, ruterInterval);
 
     var clockPromise = $interval(function(){
         $scope.clock = nbMoment(new Date()).zone('+0200').format('HH:mm:ss');
-        console.log("Clock Updated");
-    },800);
+    },clockInterval);
+        $scope.$on('$destroy', function() {
+            // Make sure that the interval is destroyed too
+            $interval.cancel(ruterPromise);
+            $interval.cancel(clockPromise);
+        });
   }]);

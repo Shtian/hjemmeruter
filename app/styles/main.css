@@ -2,21 +2,27 @@
     -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
 }
 
+.departure-index {
+    font-weight: bold;
+    text-align: left;
+    margin-bottom: 3px;
+    margin-left: 15px;
+}
+
+.arrival-entry{
+    padding: 5px;
+    border-radius: 25px;
+    border: 2px solid #e3e3e3;
+}
+
 .arrival-wrapper {
     width: 900px;
     margin: 0 auto;
     display: block;
-    height: 100px;
 }
 .arrival {
-    width:28%;
-    float: left;
-    display: block;
-    background-color: #e5e5e5;
-    height: 60px;
-    margin: 20px;
-    padding: 10px;
     text-align: center;
+    padding: 0.9375rem;
 }
 
 .expected-time {
@@ -28,11 +34,13 @@
     width: auto;
     text-align: center;
 }
+.clock h1 {
+    color: #e3e3e3;
+}
 
-body {
-    background: #fafafa;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    color: #333;
+html body {
+    background: #033649;
+    color: #e3e3e3;
 }
 
 .hero-unit {
